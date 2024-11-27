@@ -1,160 +1,108 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5deb3;
-  margin: 0;
+  font-family: Roboto, sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-#playlist {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  width: 100%;
-  height: 400px; /* Increased height */
-  margin-bottom: 15px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Allows space for speed control */
-}
-
-#playlist ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
-  flex-grow: 1; /* Ensures the list takes up most of the playlist area */
-}
-
-#playlist li {
-  padding: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#playlist li:nth-child(odd) {
-  background-color: #e8e8e8;
-}
-
-#playlist li:nth-child(even) {
+  color: #554122;
   background-color: #f0f0f0;
+  background-image: linear-gradient(to top, #fcf8f1 30%, #F7EDDE 70%);        
 }
 
-#playlist li:hover {
-  background-color: #d0d0d0;
-}
-
-#playlist li.active {
-  background-color: #d4edda;
-  font-weight: bold;
-}
-
-#playlist .speed-control-container {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#playlist .speed-control-container label {
-  font-size: 14px;
-  color: black;
-}
-
-#playlist .speed-control-container select {
-  border: 1px solid #ccc;
+h1 {
+  font-family: Roboto;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #554122;
+  position: absolute;
+  top: 23%;
+  left: 50%; 
+  transform: translateX(-50%);
+  padding: 10px;
   border-radius: 5px;
-  padding: 5px;
-  font-size: 14px;
-  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 
-#audio-player {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  width: 350px; /* Adjusted width to match playlist size */
-}
-
-#controls {
+.audioPlayer {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 
 button {
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 0.3s, background-color 0.3s;
+  color: #877964;
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
-button i {
-  font-size: 20px;
-  color: black;
-  transition: color 0.3s ease;
+button:hover {
+  color: #d5a660;
+  background-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 2px #d5a660, 0 0 2px #d5a660, 0 0 3px #d5a660;
+  /* Neon light effect */
 }
 
-button:hover i {
-  color: #333;
-}
-
-#progress {
-  flex-grow: 1;
+.progressBar,
+.volumeBar {
   -webkit-appearance: none;
   appearance: none;
-  height: 5px;
-  background: black;
-  border-radius: 5px;
+  width: 300px;
+  height: 4px;
+  background: #d3d3d3;
   outline: none;
+  border-radius: 2px;
+}
+
+.progressBar:hover,
+.volumeBar:hover {
+  box-shadow: 0 0 3px #d5a660, 0 0 2px #d5a660, 0 0 1px #d5a660;
+  /* Neon light effect */
+}
+
+.volumeBar {
+  width: 75px;
+}
+
+.progressBar::-webkit-slider-thumb,
+.volumeBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #d5a660;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
   cursor: pointer;
 }
 
-#time-remaining {
-  font-size: 14px;
-  color: black;
-  margin-left: 10px;
-  white-space: nowrap;
-}
-
-#volume-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#volume-slider {
-  position: absolute;
-  bottom: -40px;
-  display: none;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100px;
-  height: 5px;
-  background: black;
-  border-radius: 5px;
-  outline: none;
+.progressBar::-moz-range-thumb,
+.volumeBar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #d5a660;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
   cursor: pointer;
-  transition: opacity 0.3s ease;
 }
 
-#volume-slider.visible {
-  display: block;
-}
-
-#volume-slider.hidden {
-  display: none;
+.progressBar:focus,
+.volumeBar:focus {
+  outline: none;
 }

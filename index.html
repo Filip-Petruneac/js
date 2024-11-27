@@ -2,56 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Styled Audio Player</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div id="audio-player">
-    <!-- Playlist Section -->
-    <div id="playlist">
-      <ul>
-        <li data-src="audio/sample.mp3" class="active">Track 1</li>
-        <li data-src="audio/sample1.mp3">Track 2</li>
-      </ul>
-      <div class="speed-control-container">
-        <label for="speed-control">Speed:</label>
-        <select id="speed-control">
-          <option value="0.5">0.5x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.5">1.5x</option>
-          <option value="2">2x</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Audio Element -->
-    <audio id="audio" src="audio/sample.mp3"></audio>
-
-    <!-- Controls Section -->
-    <div id="controls">
-      <!-- Play/Pause Button -->
-      <button id="play-pause" aria-label="Play or Pause Audio">
-        <i class="fas fa-play"></i>
-      </button>
-
-      <!-- Progress Bar -->
-      <label for="progress" class="visually-hidden"></label>
-      <input type="range" id="progress" value="0" max="100">
-
-      <!-- Time Remaining -->
-      <span id="time-remaining">00:00</span>
-
-      <!-- Volume Control -->
-      <div id="volume-container">
-        <button id="volume-button" aria-label="Toggle Volume Control">
-          <i class="fas fa-volume-up"></i>
-        </button>
-        <input type="range" id="volume-slider" class="hidden" value="50" max="100" aria-label="Volume">
-      </div>
-    </div>
+  <div>
+    <h1>Js Audio Player</h1>
+</div>
+  <div class="audioPlayer">
+      <button class="playPauseBtn"></button>
+      <button class="speedBtn">1x</button>
+      <span class="currentTime">0:00</span>
+      <input type="range" class="progressBar" min="0" max="100" value="0">
+      <span class="duration">0:00</span>
+      <button class="muteBtn"></button>
+      <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
+      <audio class="audio" src="./audio/sample.mp3"></audio>
   </div>
+  <div class="audioPlayer">
+    <button class="playPauseBtn"></button>
+    <button class="speedBtn">1x</button>
+    <span class="currentTime">0:00</span>
+    <input type="range" class="progressBar" min="0" max="100" value="0">
+    <span class="duration">0:00</span>
+    <button class="muteBtn"></button>
+    <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
+    <audio class="audio" src="./audio/sample1.mp3"></audio>
+</div>
   <script src="app.js" defer></script>
 </body>
 </html>
