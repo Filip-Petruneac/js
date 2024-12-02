@@ -2,33 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Styled Audio Player</title>
+  <title>Multiple Audio Players</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div>
-    <h1>Js Audio Player</h1>
-</div>
-  <div class="audioPlayer">
-      <button class="playPauseBtn"></button>
-      <button class="speedBtn">1x</button>
-      <span class="currentTime">0:00</span>
-      <input type="range" class="progressBar" min="0" max="100" value="0">
-      <span class="duration">0:00</span>
-      <button class="muteBtn"></button>
-      <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
-      <audio class="audio" src="./audio/sample.mp3"></audio>
+  <!-- First Audio Player -->
+  <div class="audio-container">
+    <h1>Audio Player 1</h1>
+    <h2 class="current-song-title">No song playing</h2>
+    <div class="audioPlayer">
+        <button class="playPauseBtn"></button>
+        <button class="speedBtn">1x</button>
+        <span class="currentTime">0:00</span>
+        <input type="range" class="progressBar" min="0" max="100" value="0">
+        <span class="duration">0:00</span>
+        <button class="muteBtn"></button>
+        <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
+        <audio class="audio" src="./audio/David Stănuș Se dă o luptă tot mai grea [TubeRipper.com].mp3"></audio>
+    </div>
+
+    <div class="playlist">
+      <div class="playlist-item active" data-src="./audio/David Stănuș Se dă o luptă tot mai grea [TubeRipper.com].mp3">Se da o lupta tot mai grea</div>
+      <div class="playlist-item" data-src="./audio/Ne Stingem Doamne - Naomi Avram [TubeRipper.com].mp3">Ne stingem Doamne</div>
+      <div class="playlist-item" data-src="./audio/sample.mp3">Mai cheama-mi Isuse</div>
+    </div>
   </div>
-  <div class="audioPlayer">
-    <button class="playPauseBtn"></button>
-    <button class="speedBtn">1x</button>
-    <span class="currentTime">0:00</span>
-    <input type="range" class="progressBar" min="0" max="100" value="0">
-    <span class="duration">0:00</span>
-    <button class="muteBtn"></button>
-    <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
-    <audio class="audio" src="./audio/sample1.mp3"></audio>
-</div>
+
+  <!-- Second Audio Player -->
+  <div class="audio-container">
+    <h1>Audio Player 2</h1>
+    <h2 class="current-song-title">No song playing</h2>
+    <div class="audioPlayer">
+        <button class="playPauseBtn"></button>
+        <button class="speedBtn">1x</button>
+        <span class="currentTime">0:00</span>
+        <input type="range" class="progressBar" min="0" max="100" value="0">
+        <span class="duration">0:00</span>
+        <button class="muteBtn"></button>
+        <input type="range" class="volumeBar" min="0" max="1" step="0.1" value="1">
+        <audio class="audio" src="./audio/sample1.mp3"></audio>
+    </div>
+
+    <div class="playlist">
+      <div class="playlist-item active" data-src="./audio/sample1.mp3">Faca-mi-se-ntotdeuna...</div>
+      <div class="playlist-item" data-src="./audio/Si frunzele s-au vestejit - Tudor Oleniuc (Cover) [TubeRipper.com].mp3">Si frunzele s-au vestejit</div>
+      <div class="playlist-item" data-src="./audio/Sorin si Daniela Piu - In Fata Ta Isuse [TubeRipper.com].mp3">In fata Ta Isuse</div>
+    </div>
+  </div>
+
   <script src="app.js" defer></script>
 </body>
 </html>

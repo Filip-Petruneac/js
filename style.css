@@ -1,40 +1,71 @@
 body {
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  color: #554122;
-  background-color: #f0f0f0;
-  background-image: linear-gradient(to top, #fcf8f1 30%, #F7EDDE 70%);        
+  color: #3a2b16;
+  background: linear-gradient(135deg, #f7f0e1 0%, #f0e6d2 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 h1 {
-  font-family: Roboto;
-  font-size: 1.8rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
   margin-bottom: 20px;
-  color: #554122;
-  position: absolute;
-  top: 23%;
-  left: 50%; 
-  transform: translateX(-50%);
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+  color: #4a3422;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  letter-spacing: 1px;
+  padding: 15px 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  text-align: center;
 }
 
 .audioPlayer {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  gap: 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1), 
+    inset 0 0 15px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.audio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto; 
+  padding: 20px;
+}
+
+.current-song-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6e5a43;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.audioPlayer:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.12), 
+    inset 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 button {
@@ -42,21 +73,45 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: color 0.3s, background-color 0.3s;
-  color: #877964;
-  background-color: rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  color: #6e5a43;
+  background-color: rgba(110, 90, 67, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255,255,255,0.3), 
+    transparent
+  );
+  transition: all 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
-  color: #d5a660;
-  background-color: rgba(0, 0, 0, 0.12);
-  box-shadow: 0 0 2px #d5a660, 0 0 2px #d5a660, 0 0 3px #d5a660;
-  /* Neon light effect */
+  color: #a47c3b;
+  background-color: rgba(164, 124, 59, 0.12);
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 10px rgba(164, 124, 59, 0.2), 
+    0 0 15px rgba(164, 124, 59, 0.1);
 }
 
 .progressBar,
@@ -64,45 +119,85 @@ button:hover {
   -webkit-appearance: none;
   appearance: none;
   width: 300px;
-  height: 4px;
-  background: #d3d3d3;
+  height: 6px;
+  background: linear-gradient(to right, #e0d3c3, #d3c4b3);
   outline: none;
-  border-radius: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .progressBar:hover,
 .volumeBar:hover {
-  box-shadow: 0 0 3px #d5a660, 0 0 2px #d5a660, 0 0 1px #d5a660;
-  /* Neon light effect */
+  box-shadow: 
+    0 0 8px rgba(213, 166, 96, 0.5), 
+    0 0 12px rgba(213, 166, 96, 0.3);
 }
 
 .volumeBar {
-  width: 75px;
+  width: 100px;
 }
 
 .progressBar::-webkit-slider-thumb,
 .volumeBar::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px;
-  height: 16px;
-  background-color: #d5a660;
+  width: 18px;
+  height: 18px;
+  background-color: #a47c3b;
   border-radius: 50%;
-  border: 2px solid #ffffff;
+  border: 3px solid #fff;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    inset 0 0 3px rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.progressBar::-moz-range-thumb,
-.volumeBar::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background-color: #d5a660;
-  border-radius: 50%;
-  border: 2px solid #ffffff;
-  cursor: pointer;
+.progressBar::-webkit-slider-thumb:hover,
+.volumeBar::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 3px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .progressBar:focus,
 .volumeBar:focus {
   outline: none;
+}
+
+.playlist {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.playlist-item {
+  cursor: pointer;
+  padding: 15px;
+  margin: 8px 0;
+  background-color: rgba(240, 240, 240, 0.7);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.playlist-item:hover {
+  background-color: rgba(220, 220, 220, 0.8);
+  transform: translateX(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-item.active {
+  background-color: rgba(213, 166, 96, 0.2);
+  color: #4a3422;
+  font-weight: 500;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 0 10px rgba(213, 166, 96, 0.1);
 }
